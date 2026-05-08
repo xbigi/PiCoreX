@@ -4,6 +4,9 @@ A lightweight self-hosted dashboard for Raspberry Pi and Linux servers.
 
 PiCoreX shows live system information directly from your device through a clean web dashboard.
 
+## Preview
+
+![PiCoreX Dashboard](assets/dashboard.png)
 ## Features
 
 - CPU usage
@@ -25,6 +28,4 @@ cd PiCoreX
 chmod +x install.sh run.sh
 ./install.sh
 ./run.sh
-## Preview
 
-![PiCoreX Dashboard](assets/dashboard.png)
