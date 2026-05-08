@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070a12" />
+  <title>PiCoreX</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+
+  <main class="dashboard">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Raspberry Pi Monitoring</p>
+        <h1>PiCoreX</h1>
+        <p class="subtitle">Lightweight self-hosted dashboard for Raspberry Pi and Linux servers.</p>
+      </div>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        Live
+      </div>
+    </header>
+
+    <section class="overview">
+      <div class="server-card">
+        <div>
+          <p class="card-label">Hostname</p>
+          <h2 id="hostname">--</h2>
+          <p class="card-label" style="margin-top:10px">Local IP</p>
+          <h2 id="local-ip" style="font-size:clamp(18px,3vw,28px)">--</h2>
+        </div>
+        <div class="server-icon">π</div>
+      </div>
+
+      <div class="metric-card" style="display:flex;flex-direction:column;justify-content:center;gap:6px">
+        <p class="card-label">Uptime</p>
+        <h2 id="uptime" style="font-size:clamp(24px,4vw,40px);margin:0;letter-spacing:-0.04em">--</h2>
+        <p class="card-label" id="net-label" style="margin-top:12px">Network ↑ -- &nbsp; ↓ --</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="metric-card">
+        <div class="metric-header">
+          CPU
+          <span class="badge" id="cpu-status">Normal</span>
+        </div>
+        <div class="metric-value">
+          <span id="cpu">--</span>
+          <small>%</small>
+        </div>
+        <div class="progress"><div class="progress-fill" id="cpu-bar"></div></div>
+        <p class="card-label" id="cpu-sub" style="margin-top:8px;font-size:12px"></p>
+        <canvas id="cpu-spark" width="200" height="36" style="width:100%;margin-top:4px;opacity:.7"></canvas>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          RAM
+          <span class="badge" id="ram-status">Normal</span>
+        </div>
+        <div class="metric-value">
+          <span id="ram">--</span>
+          <small>%</small>
+        </div>
+        <div class="progress"><div class="progress-fill" id="ram-bar"></div></div>
+        <p class="card-label" id="ram-sub" style="margin-top:8px;font-size:12px"></p>
+        <canvas id="ram-spark" width="200" height="36" style="width:100%;margin-top:4px;opacity:.7"></canvas>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          Disk
+          <span class="badge" id="disk-status">Normal</span>
+        </div>
+        <div class="metric-value">
+          <span id="disk">--</span>
+          <small>%</small>
+        </div>
+        <div class="progress"><div class="progress-fill" id="disk-bar"></div></div>
+        <p class="card-label" id="disk-sub" style="margin-top:8px;font-size:12px"></p>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          Temp
+          <span class="badge" id="temp-status">Normal</span>
+        </div>
+        <div class="metric-value">
+          <span id="temp">--</span>
+          <small>°C</small>
+        </div>
+        <div class="progress"><div class="progress-fill" id="temp-bar"></div></div>
+        <p class="card-label" id="temp-sub" style="margin-top:8px;font-size:12px"></p>
+        <canvas id="temp-spark" width="200" height="36" style="width:100%;margin-top:4px;opacity:.7"></canvas>
+      </div>
+    </section>
+
+    <section class="details">
+      <div class="panel">
+        <h2>System info</h2>
+        <div class="info-row"><span>System</span><strong id="system">--</strong></div>
+        <div class="info-row"><span>Kernel</span><strong id="kernel">--</strong></div>
+        <div class="info-row"><span>CPU cores</span><strong id="cpu-count">--</strong></div>
+        <div class="info-row"><span>Last update</span><strong id="updated-at">--</strong></div>
+      </div>
+
+      <div class="panel">
+        <h2>Running services</h2>
+        <div id="services-list" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Docker containers</h2>
+        <div id="docker-list" class="list"></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>PiCoreX v0.2.0</span>
+      <span>Built with Flask + psutil</span>
+    </footer>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
